@@ -11,8 +11,32 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase representa un tren muy básico.
     /// </summary>
-    public class Train
+      public class Train
     {
+        /// <summary>
+        /// Atributo que identifica a cada tren
+        /// </summary>
+        /// <value></value>
+        private string identifier { get; set; }
+        /// <summary>
+        /// Contador que lo utilizamos en el constructor para saber cuantos
+        /// trenes se han creado.
+        /// </summary>
+        private static int count = 0;
+
+        /// <summary>
+        /// Constructor de la clase Train.
+        /// </summary>
+        /// <param name="identificador">Es una string que diferencia a los trenes.</param>
+        public Train(string identificador)
+        {
+            this.identifier = identificador;
+            Console.WriteLine(count);
+            count++;
+        }
+
+
+
         /// <summary>
         /// Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
         /// </summary>
@@ -55,6 +79,15 @@ namespace ClassLibrary
 
             Console.Write("The engines are already stopped");
             return this.IsEngineStarted;
+        }
+
+
+        /// <summary>
+        /// Destructor o finalizador de la clase Train
+        /// </summary>
+        ~Train()
+        {
+            count--;
         }
     }
 }
